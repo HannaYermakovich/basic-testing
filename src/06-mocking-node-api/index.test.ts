@@ -1,6 +1,9 @@
-import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from './index';
+import {
+  readFileAsynchronously,
+  doStuffByTimeout,
+  doStuffByInterval,
+} from './index';
 import { existsSync, readFile } from 'fs';
-
 
 jest.mock('fs', () => ({
   existsSync: jest.fn(),
@@ -56,7 +59,10 @@ describe('doStuffByInterval', () => {
     const setIntervalMock = jest.spyOn(global, 'setInterval');
     doStuffByInterval(callback, interval);
 
-    expect(setIntervalMock).toHaveBeenCalledWith(expect.any(Function), interval);
+    expect(setIntervalMock).toHaveBeenCalledWith(
+      expect.any(Function),
+      interval,
+    );
   });
 
   test('should call callback multiple times after multiple intervals', () => {
@@ -98,7 +104,9 @@ describe('readFileAsynchronously', () => {
     const result = await readFileAsynchronously(pathToFile);
 
     expect(result).toBeNull();
-    expect(existsSync).toHaveBeenCalledWith(expect.stringContaining(pathToFile));
+    expect(existsSync).toHaveBeenCalledWith(
+      expect.stringContaining(pathToFile),
+    );
   });
 
   test('should return null if file does not exist', async () => {
@@ -125,7 +133,12 @@ describe('readFileAsynchronously', () => {
     const result = await readFileAsynchronously(pathToFile);
 
     expect(result).toBe(fileContent);
-    expect(mockExistsSync).toHaveBeenCalledWith(expect.stringContaining(pathToFile));
-    expect(mockReadFile).toHaveBeenCalledWith(expect.stringContaining(pathToFile), expect.any(Function));
+    expect(mockExistsSync).toHaveBeenCalledWith(
+      expect.stringContaining(pathToFile),
+    );
+    expect(mockReadFile).toHaveBeenCalledWith(
+      expect.stringContaining(pathToFile),
+      expect.any(Function),
+    );
   });
 });

@@ -11,10 +11,10 @@ describe('generateLinkedList', () => {
           value: 3,
           next: {
             value: null,
-            next: null
-          }
-        }
-      }
+            next: null,
+          },
+        },
+      },
     };
     expect(generateLinkedList(elements)).toStrictEqual(expectedList);
   });
@@ -29,10 +29,10 @@ describe('generateLinkedList', () => {
           value: 15,
           next: {
             value: null,
-            next: null
-          }
-        }
-      }
+            next: null,
+          },
+        },
+      },
     };
     expect(generateLinkedList(elements)).toStrictEqual(expectedList);
   });
@@ -41,7 +41,7 @@ describe('generateLinkedList', () => {
     const elements: number[] = [];
     const expectedList = {
       value: null,
-      next: null
+      next: null,
     };
     expect(generateLinkedList(elements)).toStrictEqual(expectedList);
   });
